@@ -24,7 +24,7 @@ public class PingEvent implements Listener {
 
     public void countchange() {
         Random random = new Random();
-//        int minimumRealisticNumber = -1;
+///        int minimumRealisticNumber = -1;
 //        int maximumRealisticNumber = 25;
         int coinFlip = random.nextInt(100);
         int countChange = 1;
