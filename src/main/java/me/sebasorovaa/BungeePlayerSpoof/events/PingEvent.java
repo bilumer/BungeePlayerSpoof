@@ -5,7 +5,6 @@ import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 import static me.sebasorovaa.BungeePlayerSpoof.Main.fakepla;
 
@@ -16,7 +15,7 @@ public class PingEvent implements Listener {
     public void changeitfunc() {
         Random changerandom = new Random();
         int coinFlip2 = changerandom.nextInt(100);
-        if (coinFlip2 >= 50) {
+        if (coinFlip2 >= 5) {
             changeit = 0;
         } else {
             changeit = 1;
@@ -25,20 +24,24 @@ public class PingEvent implements Listener {
 
     public void countchange() {
         Random random = new Random();
-        int minimumRealisticNumber = -1;
+//        int minimumRealisticNumber = -1;
+//        int maximumRealisticNumber = 25;
         int coinFlip = random.nextInt(100);
-        int countChange = ThreadLocalRandom.current().nextInt(mincount, maxcount + 1);
+        int countChange = 1;
         if (coinFlip >= 50){
             fakepla = fakepla + countChange;
         } else {
             fakepla = fakepla - countChange;
         }
-        if (fakepla < minimumRealisticNumber){
-            fakepla = minimumRealisticNumber;
+        if (fakepla < mincount){
+            fakepla = mincount;
+        }
+        if (fakepla > maxcount) {
+            fakepla = maxcount;
         }
 
-        if (fakepla < 1) {
-            fakepla = 2;
+        if (fakepla < 2) {
+            fakepla = 3;
         }
     }
 
